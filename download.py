@@ -7,7 +7,7 @@ from transformers import pipeline
 
 def download_model():
     # do a dry run of loading the huggingface model, which will download weights
-    pipeline('summarization', model="s-1-n-t-h/flan-t5", framework='pt',use_auth_token='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')
+    pipeline('summarization', model="google/flan-t5-base", framework='pt',use_auth_token='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')
 
 if __name__ == "__main__":
     download_model()
