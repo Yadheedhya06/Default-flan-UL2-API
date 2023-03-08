@@ -20,7 +20,7 @@ def inference(model_inputs:dict) -> dict:
         return {'message': "No prompt provided"}
     
     # Run the model
-    result = model(prompt, min_length=5, max_length=20)
+    result = model(prompt, min_length=5, max_length=25)
 
     # Return the results as a dictionary
     return result
