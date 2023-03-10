@@ -4,10 +4,12 @@
 # In this example: A Huggingface BERT model
 
 from transformers import pipeline
+from optimum.onnxruntime import ORTModelForSeq2SeqLM
 
 def download_model():
     # do a dry run of loading the huggingface model, which will download weights
-    pipeline('summarization', model="braindao/flan-t5-cnn")
+   onnx_model = ORTModelForSeq2SeqLM.from_pretrained('braindao/flan-t5-cnn',from_transformers=True)
+   model = pipeline('summarization', model=onxx_model)
 
 if __name__ == "__main__":
     download_model()
