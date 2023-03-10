@@ -1,4 +1,5 @@
 from transformers import pipeline
+from optimum.onnxruntime import ORTModelForSeq2SeqLM
 import torch
 
 # Init is ran on server startup
@@ -7,7 +8,8 @@ def init():
     global model
     
     device = 0 if torch.cuda.is_available() else -1
-    model = pipeline('summarization', model="braindao/flan-t5-cnn")
+    onnx_model = ORTModelForSeq2SeqLM.from_pretrained('braindao/flan-t5-cnn',from_transformers=True)
+    model = pipeline('summarization', model=onxx_model)
 
 # Inference is ran for every server call
 # Reference your preloaded global model variable here.
